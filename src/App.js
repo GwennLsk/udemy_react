@@ -1,11 +1,15 @@
 import Expenses from "./components/Expenses/Expenses";
-import expenses from "./components/Expenses/ExpensesData";
+import  expensesData from "./components/Expenses/ExpensesData";
 import NewExpense from "./components/NewExpense/NewExpense";
+import {useState} from "react";
 
 function App() {
+     const [expenses, setExpenses] = useState(expensesData)
+
     const addExpenseHandler = (expense) => {
-        console.log("in App.js");
-        console.log(expense)
+         setExpenses(prevExpenses => {
+             return [expense, ...prevExpenses];
+         })
     }
 
     return (
